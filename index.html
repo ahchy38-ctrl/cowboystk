@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cowboy Steak House</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Simple fade-in animation for hero section */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-950 text-white">
+
+  <!-- Navbar -->
+  <div class="flex justify-between items-center p-4 md:px-10 border-b border-neutral-800">
+    <h1 class="text-xl md:text-2xl font-bold">Cowboy Steak House</h1>
+    <div class="hidden md:flex gap-6 text-sm">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="md:hidden bg-white text-black px-4 py-2 rounded">Menu</button>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="grid md:grid-cols-2 gap-6 p-6 md:p-12 items-center">
+    <div id="hero-text" class="fade-in">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Authentic Steak Experience</h2>
+      <p class="text-neutral-400 mb-6">Premium cuts, fire-grilled perfection, and a true cowboy vibe.</p>
+      <button class="text-lg px-6 py-3 bg-red-600 rounded hover:bg-red-700">Order Now</button>
+    </div>
+    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141"
+         alt="steak"
+         class="rounded-2xl shadow-lg w-full h-[300px] md:h-[400px] object-cover fade-in" id="hero-img">
+  </div>
+
+  <!-- Menu Section -->
+  <div id="menu" class="p-6 md:p-12">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Our Menu</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6" id="menu-items">
+      <!-- Menu items injected by JS -->
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about" class="p-6 md:p-12 bg-neutral-900">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">About Us</h2>
+      <p class="text-neutral-400">
+        Cowboy Steak House brings you the finest quality steaks with a rustic western atmosphere. Our chefs use traditional grilling techniques to deliver bold flavors.
+      </p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="p-6 md:p-12">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Contact Us</h2>
+      <p class="text-neutral-400 mb-6">Visit us or place an order online.</p>
+      <button class="px-6 py-3 bg-red-600 rounded hover:bg-red-700">Call Now</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center text-neutral-500 text-sm p-4 border-t border-neutral-800">
+    © 2026 Cowboy Steak House. All rights reserved.
+  </div>
+
+  <!-- JS to inject menu items and animate hero -->
+  <script>
+    // Menu items
+    const menuItems = ["Ribeye Steak", "T-Bone Steak", "Grilled Chicken", "BBQ Ribs", "Burger", "Fries"];
+    const menuContainer = document.getElementById('menu-items');
+
+    menuItems.forEach(item => {
+      const card = document.createElement('div');
+      card.className = "bg-neutral-900 border border-neutral-800 rounded-xl p-4";
+      card.innerHTML = `
+        <div class="h-40 bg-neutral-800 rounded-xl mb-4"></div>
+        <h3 class="text-lg font-semibold">${item}</h3>
+        <p class="text-neutral-400 text-sm">Delicious and freshly made.</p>
+      `;
+      menuContainer.appendChild(card);
+    });
+
+    // Hero fade-in animation
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('hero-text').classList.add('show');
+      document.getElementById('hero-img').classList.add('show');
+    });
+  </script>
+
+</body>
+</html>
